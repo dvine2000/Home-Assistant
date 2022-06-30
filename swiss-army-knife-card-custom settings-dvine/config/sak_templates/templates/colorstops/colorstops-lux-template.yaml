@@ -1,0 +1,29 @@
+colorstops_lux:
+  template:
+    type: colorstops
+    defaults:
+      - thegap: 1
+      - theFill: true
+      - theStroke: false
+  colorstops:
+    gap: '[[thegap]]'
+    fill: '[[theFill]]'
+    stroke: '[[theStroke]]'
+    colors:
+      0: '#3B3B3B'
+      5: '#D4D4D4'
+      10: '#7F8C9F'
+      15: '#48447F'
+      20: '#7A82E3'
+      25: '#CFD2F7'
+      50: '#1993D0'
+      75: '#51AEDC'
+      100: '#82C5E6'
+      125: '#B1DBEF'
+      150: '#DFF0F9'
+      175: '#4CBA51'
+      200: '#9EE5A1'
+      225: '#E2B640'
+      250: '#FECF48'
+      275: '#FEA599'
+      300: '#FFC7C0'

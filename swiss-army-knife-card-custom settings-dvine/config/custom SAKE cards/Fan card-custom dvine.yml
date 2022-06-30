@@ -1,0 +1,126 @@
+##############################################################################################################################################################
+##								                                	<<<<  FAN CARD >>>> 
+##############################################################################################################################################################
+
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: switch.ventilator_woonkamer
+              name: Ventilator
+              area: Woonkamer
+              icon: mdi:fan
+
+          # Define aspect ratio as square
+          aspectratio: 1/1
+
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: square-state
+                position:
+                  cx: 50
+                  cy: 50
+                tools:
+                  # Background used for active / inactive card
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 50
+                      width: 100
+                      height: 100
+                      radius:
+                        top: 0
+                        bottom: 0
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-card--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-card--off: true
+                    styles:
+                      rectex:
+                        pointer-events: none
+
+                  # State rectangle at the top of the card. Colors with the state
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 2.5
+                      width: 90
+                      height: 5
+                      radius:
+                        top: 0
+                        bottom: 2
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-switch--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-switch-off: true
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 25
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        styles:
+                          icon:
+                            fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
+                      - state: 'off'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: switch
+                        actions:
+                          - action: call-service
+                            service: switch.toggle
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 10
+                      cy: 55
+                    entity_index: 0
+                    classes:
+                      name:
+                        homekit-name__name: true
+
+                  # ------------------------------------------------------------
+                  - type: area
+                    position:
+                      cx: 10
+                      cy: 70
+                    entity_index: 0
+                    classes:
+                      area:
+                        homekit-area__area: true
+
+                  # ------------------------------------------------------------
+
+##############################################################################################################################################################
+##								                            	<<<<<  END FAN CARD   >>>>> 
+##############################################################################################################################################################

@@ -1,0 +1,190 @@
+##############################################################################################################################################################
+##                                                              <<<<  SUNSCREEN / AWNINGS CARD >>>> 
+##############################################################################################################################################################
+ 
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: cover.zonnescherm
+              name: Zonnescherm
+              area: Tuin
+              icon: mdi:storefront-outline
+
+            - entity: cover.zonnescherm
+              name: Zonnescherm
+              area: Tuin
+              icon: mdi:storefront-outline
+              attribute: position
+              #unit_of_measurement: "%"
+
+          # Define aspect ratio as square
+          aspectratio: 1/1
+
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: square-state
+                position:
+                  cx: 50
+                  cy: 50
+                tools:
+                  # Background used for active / inactive card
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 50
+                      width: 100
+                      height: 100
+                      radius:
+                        top: 0
+                        bottom: 0
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-card--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-card--off: true
+                    styles:
+                      rectex:
+                        pointer-events: none
+
+                  # State rectangle at the top of the card. Colors with the state
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 2.5
+                      width: 90
+                      height: 5
+                      radius:
+                        top: 0
+                        bottom: 2
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-switch--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-switch-off: true
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:arrow-up-bold-box-outline
+                    position:
+                      cx: 18
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    animations:
+                      - state: 'open'
+                        styles:
+                          icon:
+                            fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
+                      - state: 'close'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: cover
+                        actions:
+                          - action: call-service
+                            service: cover.open_cover
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:stop-circle-outline
+                    position:
+                      cx: 50
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    animations:
+                      - state: 'stop'
+                        styles:
+                          icon:
+                            fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
+                      - state: 'stop'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: cover
+                        actions:
+                          - action: call-service
+                            service: cover.stop_cover
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:arrow-down-bold-box-outline
+                    position:
+                      cx: 83
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    animations:
+                      - state: 'close'
+                        styles:
+                          icon:
+                            fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
+                      - state: 'open'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: cover
+                        actions:
+                          - action: call-service
+                            service: cover.close_cover
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 10
+                      cy: 55
+                    entity_index: 0
+                    classes:
+                      name:
+                        homekit-name__name: true
+                  # ------------------------------------------------------------
+                  - type: area
+                    position:
+                      cx: 10
+                      cy: 70
+                    entity_index: 0
+                    classes:
+                      area:
+                        homekit-area__area: true
+
+
+##############################################################################################################################################################
+##                                                     <<<<  END SUNSCREEN / AWNINGS CARD  >>>>    
+##############################################################################################################################################################

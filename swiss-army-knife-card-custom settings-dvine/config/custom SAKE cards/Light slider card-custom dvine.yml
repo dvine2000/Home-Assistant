@@ -1,0 +1,274 @@
+##############################################################################################################################################################
+##                                                       <<<<  LIGHT SLIDER CARD >>>> 
+##############################################################################################################################################################
+ 
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: light.light_achter_bank
+              name: Light Bank
+              area: Woonkamer
+              icon: mdi:sofa-outline
+
+            - entity: light.light_achter_bank
+              name: Light Bank
+              area: Woonkamer
+              icon: mdi:sofa-outline
+              attribute: brightness
+              unit_of_measurement: "%"
+
+          # Define aspect ratio as square
+          aspectratio: 1/1
+
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: square-state
+                position:
+                  cx: 50
+                  cy: 50
+                tools:
+                  # Background used for active / inactive card
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 50
+                      width: 100
+                      height: 100
+                      radius:
+                        top: 0
+                        bottom: 0
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-card--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-card--off: true
+                    styles:
+                      rectex:
+                        pointer-events: none
+
+                  # State rectangle at the top of the card. Colors with the state
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 2.5
+                      width: 90
+                      height: 5
+                      radius:
+                        top: 0
+                        bottom: 2
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-switch--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-switch-off: true
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 25
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        styles:
+                          icon:
+                            fill: var(--theme-ref-palette-primary80)
+                            animation: jello 2s ease-in-out both
+                      - state: 'off'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: light
+                        actions:
+                          - action: call-service
+                            service: light.toggle
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 10
+                      cy: 55
+                    entity_index: 0
+                    classes:
+                      name:
+                        homekit-name__name: true
+                  # ------------------------------------------------------------
+                  - type: area
+                    position:
+                      cx: 10
+                      cy: 70
+                    entity_index: 0
+                    classes:
+                      area:
+                        homekit-area__area: true
+                  # ------------------------------------------------------------
+                  - type: segarc
+                    id: 0
+                    entity_index: 1
+                    position:
+                      cx: 80
+                      cy: 25
+                      start_angle: 0
+                      end_angle: 360
+                      width: 2
+                      radius: 15
+                    scale:
+                      min: 0
+                      max: 100
+                    show:
+                      scale: false
+                      style: 'colorlist'
+                    derived_entity:
+                      input : '[[[ return state ]]]'
+                      state: >
+                        [[[
+                          if (typeof(entity) === 'undefined') return;
+                          if (typeof(state) === 'undefined') return;
+                          
+                          var bri = Math.round(state / 2.55);
+                          return (bri ? bri : '0');
+                        ]]]
+                      unit: >
+                        [[[
+                          if (typeof(state) === 'undefined') return undefined;
+                          return '%';
+                        ]]]
+                    segments:
+                      colorlist:
+                        gap: 1
+                        colors:
+                          - 'var(--primary-text-color)'
+                    animation:
+                      duration: 5
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--cs-theme-default-darken-15)
+                        opacity: 0.1
+                  # ------------------------------------------------------------
+              - toolset: slidertest3
+                position:
+                  cx: 50
+                  cy: 60
+                tools:
+                  # ------------------------------------------------------------
+                  - type: slider
+                    descr: '#3 test slider'
+                    position:
+                      cx: 50
+                      cy: 81
+                      orientation: horizontal
+                      capture:
+                        width: 180
+                        height: 55
+                      active:
+                        height: 10
+                        width: 80
+                        radius: 2.5
+                      track:
+                        width: 100
+                        height: 10
+                        radius: 2.5
+                      thumb:
+                        width: 8
+                        height: 14
+                        radius: 2.5
+                      label:
+                        # placement can be none, thumb, position (cx,cy)
+                        placement: position
+                        cx: 80
+                        cy: 15
+                    entity_index: 1
+                    derived_entity:
+                      input : '[[[ return state ]]]'
+                      state: >
+                        [[[
+                          if (typeof(entity) === 'undefined') return;
+                          if (typeof(state) === 'undefined') return;
+                          
+                          var bri = Math.round(state / 2.55);
+                          return (bri ? bri : '0');
+                        ]]]
+                      unit: >
+                        [[[
+                          if (typeof(state) === 'undefined') return undefined;
+                          return '%';
+                        ]]]
+                    show:
+                      uom: none
+                      active: true
+                    user_actions:
+                      drag_action:
+                        update_interval: 175          # Update every 200msec
+                        haptic: selection
+                        actions:
+                          - action: call-service
+                            service: light.turn_on
+                            parameter: brightness_pct
+                      tap_action:
+                        haptic: light
+                        actions:
+                          - action: call-service
+                            service: light.turn_on
+                            parameter: brightness_pct
+                    scale:
+                      min: 1
+                      max: 100
+                      step: 1
+                    styles:
+                      label:
+                        text-anchor: middle
+                        font-size: 12em
+                        font-weight: 600
+                        pointer-events: auto
+                      uom:
+                        font-weight: 600
+                      capture:
+                        pointer-events: all
+                        touch-action: none
+                      active:
+                        #fill: url(#sak-light-brightness-gradient--blue) #white
+                        fill: var(--theme-ref-palette-primary80)
+                        pointer-events: none
+                      track:
+                        fill: url(#sak-light-brightness-gradient)
+                        fill-opacity: 1
+                        stroke-width: 0.1em
+                        stroke: white
+                        pointer-events: none
+                      thumb:
+                        stroke-width: 1.2em
+                        stroke: var(--primary-background-color)
+                        stroke-opacity: 1
+                        fill: var(--primary-text-color)
+                        fill-opacity: 0.8
+                        pointer-events: none
+                        transition: all .5s ease
+
+##############################################################################################################################################################
+##                                                <<<<<  END  LIGHT SLIDER CARD   >>>>>      
+##############################################################################################################################################################

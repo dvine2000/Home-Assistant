@@ -1,0 +1,183 @@
+## CUSTOM COLORSTOP POWER TEMPLATE FOR WALL PLUG YOU NEED THIS COLORSTOPS-POWER-TEMPLATE TO MAKE IT WORK CUSTOM FILE MADE BY DVINE
+## CUSTOM AND NEW COLORSTOP FILES IN config\lovelace\sak_templates\definitions\colorstops-power-template.yaml	
+
+##############################################################################################################################################################
+##								                        	<<<<  WALL PLUG SENSOR CARD >>>> 
+##############################################################################################################################################################
+
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+              
+            - entity: sensor.walli_woonkamer_links_electric_consumption_w
+              unit: 'W'
+              decimals: 1
+              area: 'Wali Links'
+              name: 'Power'
+              
+            - entity: switch.walli_woonkamer_links
+              name: wallplug
+              area: Wali Links
+              icon: mdi:power
+
+          # Define aspect ratio as square
+          aspectratio: 1/1
+
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: square-sensor
+                position:
+                  cx: 50
+                  cy: 50
+                tools:
+                  # State rectangle at the top of the card. Colors with the state
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 2.5
+                      width: 90
+                      height: 5
+                      radius:
+                        top: 0
+                        bottom: 2.5
+                    entity_index: 0
+                    show:
+                      style: 'colorstops'
+                    colorstops:
+                      template:
+                        name: colorstops_power
+                        variables:
+                          - thegap: 1
+                    styles:
+                      rectex:
+                        fill: lightgrey
+                        opacity: 0.5
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 20
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 1
+                    animations:
+                      - state: 'on'
+                        styles:
+                          icon:
+                            fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
+                      - state: 'off'
+                        styles:
+                          icon:
+                            fill: var(--primary-text-color)
+                    user_actions:
+                      tap_action:
+                        haptic: switch
+                        actions:
+                          - action: call-service
+                            service: switch.toggle
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 65
+                      cy: 25
+                      start_angle: 0
+                      end_angle: 360
+                      width: 4
+                      radius_x: 30
+                      radius_y: 15
+                    entity_index: 0
+                    scale:
+                      min: 10
+                      max: 2200
+                      width: 2
+                      offset: 3
+                    show:
+                      scale: false
+                      style: 'colorstops'
+                    segments:
+                      colorstops:
+                        template:
+                          name: colorstops_power
+                          variables:
+                            - thegap: 0.5
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--cs-theme-shadow-darker)
+                        opacity: 0.4
+
+                  # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 65
+                      cy: 25
+                    entity_index: 0
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 13em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+                      uom:
+                        fill: var(--primary-text-color)
+                        font-weight: 700
+
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 10
+                      cy: 55
+                    entity_index: 0
+                    classes:
+                      name:
+                        homekit-name__name: true
+
+                  # ------------------------------------------------------------
+                  - type: area
+                    position:
+                      cx: 10
+                      cy: 70
+                    entity_index: 0
+                    classes:
+                      area:
+                        homekit-area__area: true
+
+                  # ------------------------------------------------------------
+                  - type: bar
+                    id: 1
+                    entity_index: 0
+                    position:
+                      orientation: vertical
+                      cx: 50
+                      cy: 90
+                      width: 100
+                      height: 20
+                      margin: .5
+                    hours: 24
+                    barhours: 1
+                    show:
+                      style: 'colorstops'
+                    colorstops:
+                      template:
+                        name: colorstops_power
+                        variables:
+                          - thegap: 1
+                    styles:
+                      bar:
+                        stroke-linecap: butt
+##############################################################################################################################################################
+##									                    <<<<<  END WALL PLUG SENSOR CARD  >>>>> 	
+##############################################################################################################################################################
