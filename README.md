@@ -17,3 +17,15 @@ https://community.home-assistant.io/t/release-candidate-lovelace-versatile-swiss
 
 
 If you want to use my cards and overview you have to install SAK first and make that work.
+
+the custom cards are bases on SAK10 and Wide card Examples.
+
+You can copy paste each floor section of my and edit on your needs
+edit each card that is in there of just empty the field and copy a individual card in the code see my custom SAK cards.
+picture example and complete code to copy.
+
+I hope with this I can help more people to use it also.
+
+
+note:
+Im still working on this project but everything works like on the phone examples views directory
