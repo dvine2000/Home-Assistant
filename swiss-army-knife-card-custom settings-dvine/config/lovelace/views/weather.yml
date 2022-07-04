@@ -52,476 +52,7 @@ cards:
 #------------------------------------------------------------------------------
 - type: vertical-stack
   cards:
-# =================================
-    - type: horizontal-stack
-      cards:
-        #
-        # Airvisual Pro device inspired card.
-        #
-        #######################################################################
-
-        - type: 'custom:swiss-army-knife-card'
-          entities:
-            - entity: sensor.u_s_air_quality_index
-              name: '0T: AirVisual'
-              area: 'Huizen'
-            - entity: sensor.u_s_air_pollution_level
-            - entity: sensor.u_s_main_pollutant
-            - entity: weather.noordwal_39
-              attribute: temperature
-              decimals: 1
-              unit: '°C'
-              icon: mdi:thermometer
-            - entity: weather.noordwal_39
-              attribute: humidity
-              decimals: 0
-              unit: '%'
-              icon: mdi:water-percent
-            - entity: weather.noordwal_39
-              attribute: pressure
-              decimals: 0
-              unit: 'hPa'
-              icon: mdi:gauge
-            - entity: weather.noordwal_39
-              attribute: wind_speed
-              unit: 'km/h'
-              icon: mdi:weather-windy
-            - entity: weather.noordwal_39
-
-          aspectratio: 3/2
-
-          disable_card: false
-
-          dev:
-            debug: false
-            
-          layout:
-            styles:
-              card:
-              toolsets:
-                filter: url(#nm-1)
-                will-change: filter
-              
-            toolsets:
-              # ==============================================================================
-              - toolset: title
-                position:
-                  cx: 10
-                  cy: 18
-                tools:
-                  # Area
-                  - type: area
-                    id: 10
-                    position:
-                      cx: 50
-                      cy: 50
-                    entity_index: 0
-                    styles:
-                      area:
-                        font-size: 18em
-                        font-weight: 400
-                        text-anchor: start
-
-              - toolset: weather-type
-                position:
-                  cx: 255
-                  cy: 25
-                tools:
-                  # Surface circle
-                  - type: 'circle'
-                    id: 0
-                    position:
-                      cx: 45
-                      cy: 50
-                      radius: 17
-                    styles:
-                      circle:
-                        opacity: 1
-                        fill: var(--primary-background-color)
-                  - type: 'usersvg'
-                    id: 2
-                    entity_index: 7
-                    position:
-                      cx: 45
-                      cy: 50
-                      height: 30
-                      width: 30
-                    style: 'images'
-                    images:
-                      - clear-night-night: /local/images/weather/clear-night.svg
-                      - cloudy-day: /local/images/weather/cloudy-day.svg
-                      - cloudy-night: /local/images/weather/cloudy-night.svg
-                      - fog-day: /local/images/weather/fog-day.svg
-                      - fog-night: /local/images/weather/fog-night.svg
-                      - hail-day: /local/images/weather/hail-day.svg
-                      - hail-night: /local/images/weather/hail-night.svg
-                      - lightning-day: /local/images/weather/lightning.svg
-                      - lightning-night: /local/images/weather/lightning.svg
-                      - partlycloudy-day: /local/images/weather/partlycloudy-day.svg
-                      - partlycloudy-night: /local/images/weather/partlycloudy-night.svg
-                      - pouring-day: /local/images/weather/pouring.svg
-                      - pouring-night: /local/images/weather/pouring-night.svg
-                      - rainy-day: /local/images/weather/rainy-day.svg
-                      - rainy-night: /local/images/weather/rainy-night.svg
-                      - snowy-day: /local/images/weather/snowy-day.svg
-                      - snowy-night: /local/images/weather/snowy-night.svg
-                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
-                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
-                      - sunny-day: /local/images/weather/sunny-day.svg
-                      - sunny-night: /local/images/weather/clear-night.svg
-                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
-                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
-                      - windy-day: /local/images/weather/windy-day.svg
-                      - windy-night: /local/images/weather/windy-night.svg
-                      - windy-variant-day: /local/images/weather/windy-variant.svg
-                      - windy-variant-night: /local/images/weather/windy-variant.svg
-                    animations:
-                      - state: '[[[ return (state); ]]]'
-                        image: >
-                          [[[
-                            if (states["sun.sun"].state == 'below_horizon') return (state + '-night');
-                            return (state + '-day');
-                          ]]]
-                        
-              - toolset: weather-temperature
-                position:
-                  cx: 255
-                  cy: 95
-                tools:
-                  # Temperature part
-                  - type: rectex
-                    id: 1
-                    position:
-                      cx: 42.5
-                      cy: 20
-                      width: 85
-                      height: 28
-                      radius:
-                        all: 2
-                      
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 13
-                      cy: 20
-                      icon_size: 20
-                    entity_index: 3
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-                      
-                  - type: state
-                    id: 3
-                    position:
-                      cx: 80
-                      cy: 20
-                    entity_index: 3
-                    styles:
-                      state:
-                        font-size: 15em
-                        font-weight: 400
-                        text-anchor: end
-
-              - toolset: weather-humidity
-                position:
-                  cx: 255
-                  cy: 132.5
-                tools:
-                  # Humidity part
-                  - type: rectex
-                    id: 1
-                    position:
-                      cx: 42.5
-                      cy: 20
-                      width: 85
-                      height: 28
-                      radius:
-                        all: 2
-                      
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 13
-                      cy: 20
-                      icon_size: 20
-                    entity_index: 4
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-
-                  - type: state
-                    id: 3
-                    position:
-                      cx: 80
-                      cy: 20
-                    entity_index: 4
-                    styles:
-                      state:
-                        font-size: 15em
-                        font-weight: 400
-                        text-anchor: end
-
-              - toolset: weather-pressure
-                position:
-                  cx: 255
-                  cy: 170
-                tools:
-                  # Pressure part
-                  - type: rectex
-                    id: 1
-                    position:
-                      cx: 42.5
-                      cy: 20
-                      width: 85
-                      height: 28
-                      radius:
-                        all: 2
-                      
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 13
-                      cy: 20
-                      icon_size: 20
-                    entity_index: 5
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-
-                  - type: state
-                    id: 3
-                    position:
-                      cx: 80
-                      cy: 20
-                    entity_index: 5
-                    styles:
-                      state:
-                        font-size: 15em
-                        font-weight: 400
-                        text-anchor: end
-
-              - toolset: weather-wind
-                position:
-                  cx: 255
-                  cy: 207.5
-                tools:
-                  # wind part
-                  - type: rectex
-                    id: 1
-                    position:
-                      cx: 42.5
-                      cy: 20
-                      width: 85
-                      height: 28
-                      radius:
-                        all: 2
-                      
-                  - type: icon
-                    id: 2
-                    position:
-                      cx: 13
-                      cy: 20
-                      icon_size: 20
-                    entity_index: 6
-                    styles:
-                      icon:
-                        filter: url(#is-1)
-
-                  - type: state
-                    id: 3
-                    position:
-                      cx: 80
-                      cy: 20
-                    entity_index: 6
-                    styles:
-                      state:
-                        font-size: 15em
-                        font-weight: 400
-                        text-anchor: end
-              
-              # ==============================================================================
-              - toolset:
-                  name: airvisual
-                position:
-                  cx: 100
-                  cy: 65
-                tools:
-                  # Surface rectangle
-                  - type: rectex
-                    id: 5
-                    position:
-                      cx: 80
-                      cy: 60
-                      width: 110
-                      height: 45
-                      radius:
-                        all: 2
-                    entity_index: 0
-                    show:
-                      style: 'colorstops'
-                    colorstops:
-                      fill: true
-                      colors:
-                        0: '#A8E05F'
-                        51: '#FDD74B'
-                        101: '#FE9B57'
-                        151: '#FE6A69'
-                        201: '#A97ABC'
-                        301: '#A87383'
-                    styles:
-                      rectex:
-                        stroke: var(--primary-background-color)
-                        stroke-width: 5em
-                        opacity: 1
-                        transition: fill 0.5s
-                  # State / AQI
-                  - type: 'state'
-                    id: 6
-                    position:
-                      cx: 126
-                      cy: 60
-                    entity_index: 0
-                    show:
-                      uom: end
-                    styles:
-                      state:
-                        font-size: 26em
-                        font-weight: 700
-                        text-anchor: end
-                        alignment-baseline: central
-
-                  # State / main pollutant
-                  - type: 'state'
-                    id: 7
-                    position:
-                      cx: 87.5
-                      cy: 95
-                    entity_index: 2
-                    styles:
-                      state:
-                        font-size: 12.5em
-                        font-weight: 500
-                        text-anchor: middle
-                        alignment-baseline: central
-
-                  # State / pollutant level
-                  - type: 'state'
-                    id: 8
-                    position:
-                      cx: 87.5
-                      cy: 25
-                    entity_index: 1
-                    styles:
-                      state:
-                        font-size: 12.5em
-                        font-weight: 500
-                        text-anchor: middle
-                        alignment-baseline: central
-                      
-                  # Surface circle
-                  - type: 'circle'
-                    id: 0
-                    position:
-                      cx: 2.5
-                      cy: 60
-                      radius: 45
-                    styles:
-                      circle:
-                        opacity: 1
-                        fill: var(--primary-background-color)
-
-                  - type: 'circle'
-                    id: 1
-                    entity_index: 0
-                    position:
-                      cx: 2.5
-                      cy: 60
-                      radius: 40
-                    show:
-                      style: 'colorstops'
-                    colorstops:
-                      fill: true
-                      colors:
-                        0: '#A8E05F'
-                        51: '#FDD74B'
-                        101: '#FE9B57'
-                        151: '#FE6A69'
-                        201: '#A97ABC'
-                        301: '#A87383'
-                    styles:
-                      circle:
-                        fill: var(--primary-background-color)
-                        opacity: 1
-                        transition: fill 0.5s
-
-                  - type: 'usersvg'
-                    id: 2
-                    entity_index: 0
-                    position:
-                      cx: 2.5
-                      cy: 60
-                      height: 70
-                      width: 70
-                    style: 'images'
-                    images:
-                      - face1: /local/images/airvisual/ic-face-1.svg
-                      - face2: /local/images/airvisual/ic-face-2.svg
-                      - face3: /local/images/airvisual/ic-face-3.svg
-                      - face4: /local/images/airvisual/ic-face-4.svg
-                      - face5: /local/images/airvisual/ic-face-5.svg
-                      - face6: /local/images/airvisual/ic-face-6.svg
-                    animations:
-                      - state: '50'
-                        operator: <=
-                        image: face1
-                      - state: '100'
-                        operator: <=
-                        image: face2
-                      - state: '150'
-                        operator: <=
-                        image: face3
-                      - state: '200'
-                        operator: <=
-                        image: face4
-                      - state: '300'
-                        operator: <=
-                        image: face5
-                      - state: '9999'
-                        operator: <=
-                        image: face6
-
-                    styles:
-                      usersvg:
-                        opacity: 1
-
-                  # bar
-                  - type: bar
-                    id: 2
-                    orientation: vertical
-                    entity_index: 0
-                    position:
-                      cx: 47.5
-                      cy: 145
-                      width: 180
-                      height: 55
-                      margin: 1
-                    hours: 24
-                    barhours: 1
-                    show:
-                      style: 'colorstops'
-                    colorstops:
-                      colors:
-                        0: '#A8E05F'
-                        50: '#FDD74B'
-                        100: '#FE9B57'
-                        150: '#FE6A69'
-                        200: '#A97ABC'
-                        300: '#A87383'
-                    styles:
-                      bar:
-                        stroke-linecap: round
-                        transition: fill 0.5s
-
+  
     - type: horizontal-stack
       cards:
         #
@@ -808,7 +339,7 @@ cards:
                       foreground:
                         fill: var(--theme-gradient-color-01)
                       background:
-                        fill: var(--cs-theme-default-darken-15)
+                        fill: var(--theme-ref-palette-secondary95)
                         filter: url(#is-1)
 
                   - type: icon
@@ -917,7 +448,8 @@ cards:
                       circle:
                         opacity: 1
                         fill: var(--primary-background-color)
-
+                        
+                        
                   - type: 'segarc'
                     id: 0
                     entity_index: 3
@@ -953,7 +485,8 @@ cards:
                       foreground:
                         fill: var(--theme-gradient-color-01)
                       background:
-                        fill: var(--cs-theme-default-darken-15)
+                        #fill: var(--cs-theme-default-darken-15)
+                        fill: var(--theme-ref-palette-secondary95)
                         filter: url(#is-1)
 
                   - type: icon
@@ -1033,7 +566,7 @@ cards:
                       foreground:
                         fill: var(--theme-gradient-color-01)
                       background:
-                        fill: var(--cs-theme-default-darken-15)
+                        fill: var(--theme-ref-palette-secondary95)
                         filter: url(#is-1)
 
                   - type: icon
@@ -1861,3 +1394,477 @@ cards:
                         font-size: 7.5em
                         font-weight: 400
                         text-anchor: middle
+  
+  
+
+# =================================#################################################################################################################################################################
+    - type: horizontal-stack
+      cards:
+        #
+        # Airvisual Pro device inspired card.
+        #
+        #######################################################################
+
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: sensor.u_s_air_quality_index
+              name: '0T: AirVisual'
+              area: 'Huizen'
+            - entity: sensor.u_s_air_pollution_level
+            - entity: sensor.u_s_main_pollutant
+            - entity: weather.noordwal_39
+              attribute: temperature
+              decimals: 1
+              unit: '°C'
+              icon: mdi:thermometer
+            - entity: weather.noordwal_39
+              attribute: humidity
+              decimals: 0
+              unit: '%'
+              icon: mdi:water-percent
+            - entity: weather.noordwal_39
+              attribute: pressure
+              decimals: 0
+              unit: 'hPa'
+              icon: mdi:gauge
+            - entity: weather.noordwal_39
+              attribute: wind_speed
+              unit: 'km/h'
+              icon: mdi:weather-windy
+            - entity: weather.noordwal_39
+
+          aspectratio: 3/2
+
+          disable_card: false
+
+          dev:
+            debug: false
+            
+          layout:
+            styles:
+              card:
+              toolsets:
+                filter: url(#nm-1)
+                will-change: filter
+              
+            toolsets:
+              # ==============================================================================
+              - toolset: title
+                position:
+                  cx: 10
+                  cy: 18
+                tools:
+                  # Area
+                  - type: area
+                    id: 10
+                    position:
+                      cx: 50
+                      cy: 50
+                    entity_index: 0
+                    styles:
+                      area:
+                        font-size: 18em
+                        font-weight: 400
+                        text-anchor: start
+
+              - toolset: weather-type
+                position:
+                  cx: 255
+                  cy: 25
+                tools:
+                  # Surface circle
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 45
+                      cy: 50
+                      radius: 17
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: var(--primary-background-color)
+                  - type: 'usersvg'
+                    id: 2
+                    entity_index: 7
+                    position:
+                      cx: 45
+                      cy: 50
+                      height: 30
+                      width: 30
+                    style: 'images'
+                    images:
+                      - clear-night-night: /local/images/weather/clear-night.svg
+                      - cloudy-day: /local/images/weather/cloudy-day.svg
+                      - cloudy-night: /local/images/weather/cloudy-night.svg
+                      - fog-day: /local/images/weather/fog-day.svg
+                      - fog-night: /local/images/weather/fog-night.svg
+                      - hail-day: /local/images/weather/hail-day.svg
+                      - hail-night: /local/images/weather/hail-night.svg
+                      - lightning-day: /local/images/weather/lightning.svg
+                      - lightning-night: /local/images/weather/lightning.svg
+                      - partlycloudy-day: /local/images/weather/partlycloudy-day.svg
+                      - partlycloudy-night: /local/images/weather/partlycloudy-night.svg
+                      - pouring-day: /local/images/weather/pouring.svg
+                      - pouring-night: /local/images/weather/pouring-night.svg
+                      - rainy-day: /local/images/weather/rainy-day.svg
+                      - rainy-night: /local/images/weather/rainy-night.svg
+                      - snowy-day: /local/images/weather/snowy-day.svg
+                      - snowy-night: /local/images/weather/snowy-night.svg
+                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
+                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
+                      - sunny-day: /local/images/weather/sunny-day.svg
+                      - sunny-night: /local/images/weather/clear-night.svg
+                      - snowy-rainy-day: /local/images/weather/snowy-rainy-day.svg
+                      - snowy-rainy-night: /local/images/weather/snowy-rainy-night.svg
+                      - windy-day: /local/images/weather/windy-day.svg
+                      - windy-night: /local/images/weather/windy-night.svg
+                      - windy-variant-day: /local/images/weather/windy-variant.svg
+                      - windy-variant-night: /local/images/weather/windy-variant.svg
+                    animations:
+                      - state: '[[[ return (state); ]]]'
+                        image: >
+                          [[[
+                            if (states["sun.sun"].state == 'below_horizon') return (state + '-night');
+                            return (state + '-day');
+                          ]]]
+                        
+              - toolset: weather-temperature
+                position:
+                  cx: 255
+                  cy: 95
+                tools:
+                  # Temperature part
+                  - type: rectex
+                    id: 1
+                    position:
+                      cx: 42.5
+                      cy: 20
+                      width: 85
+                      height: 28
+                      radius:
+                        all: 2
+                      
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 13
+                      cy: 20
+                      icon_size: 20
+                    entity_index: 3
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+                      
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 80
+                      cy: 20
+                    entity_index: 3
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 400
+                        text-anchor: end
+
+              - toolset: weather-humidity
+                position:
+                  cx: 255
+                  cy: 132.5
+                tools:
+                  # Humidity part
+                  - type: rectex
+                    id: 1
+                    position:
+                      cx: 42.5
+                      cy: 20
+                      width: 85
+                      height: 28
+                      radius:
+                        all: 2
+                      
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 13
+                      cy: 20
+                      icon_size: 20
+                    entity_index: 4
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 80
+                      cy: 20
+                    entity_index: 4
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 400
+                        text-anchor: end
+
+              - toolset: weather-pressure
+                position:
+                  cx: 255
+                  cy: 170
+                tools:
+                  # Pressure part
+                  - type: rectex
+                    id: 1
+                    position:
+                      cx: 42.5
+                      cy: 20
+                      width: 85
+                      height: 28
+                      radius:
+                        all: 2
+                      
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 13
+                      cy: 20
+                      icon_size: 20
+                    entity_index: 5
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 80
+                      cy: 20
+                    entity_index: 5
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 400
+                        text-anchor: end
+
+              - toolset: weather-wind
+                position:
+                  cx: 255
+                  cy: 207.5
+                tools:
+                  # wind part
+                  - type: rectex
+                    id: 1
+                    position:
+                      cx: 42.5
+                      cy: 20
+                      width: 85
+                      height: 28
+                      radius:
+                        all: 2
+                      
+                  - type: icon
+                    id: 2
+                    position:
+                      cx: 13
+                      cy: 20
+                      icon_size: 20
+                    entity_index: 6
+                    styles:
+                      icon:
+                        filter: url(#is-1)
+
+                  - type: state
+                    id: 3
+                    position:
+                      cx: 80
+                      cy: 20
+                    entity_index: 6
+                    styles:
+                      state:
+                        font-size: 15em
+                        font-weight: 400
+                        text-anchor: end
+              
+              # ==============================================================================
+              - toolset:
+                  name: airvisual
+                position:
+                  cx: 90
+                  cy: 65
+                tools:
+                  # Surface rectangle
+                  - type: rectex
+                    id: 5
+                    position:
+                      cx: 65
+                      cy: 60
+                      width: 80
+                      height: 35
+                      radius:
+                        all: 2
+                    entity_index: 0
+                    show:
+                      style: 'colorstops'
+                    colorstops:
+                      fill: true
+                      colors:
+                        0: '#A8E05F'
+                        51: '#FDD74B'
+                        101: '#FE9B57'
+                        151: '#FE6A69'
+                        201: '#A97ABC'
+                        301: '#A87383'
+                    styles:
+                      rectex:
+                        stroke: var(--primary-background-color)
+                        stroke-width: 5em
+                        opacity: 1
+                        transition: fill 0.5s
+                  # State / AQI
+                  - type: 'state'
+                    id: 6
+                    position:
+                      cx: 90
+                      cy: 60
+                    entity_index: 0
+                    show:
+                      uom: end
+                    styles:
+                      state:
+                        font-size: 20em
+                        font-weight: 550
+                        text-anchor: end
+                        alignment-baseline: central
+
+                  # State / main pollutant
+                  - type: 'state'
+                    id: 7
+                    position:
+                      cx: 80
+                      cy: 95
+                    entity_index: 2
+                    styles:
+                      state:
+                        font-size: 11em
+                        font-weight: 400
+                        text-anchor: middle
+                        alignment-baseline: central
+
+                  # State / pollutant level
+                  - type: 'state'
+                    id: 8
+                    position:
+                      cx: 80
+                      cy: 25
+                    entity_index: 1
+                    styles:
+                      state:
+                        font-size: 11em
+                        font-weight: 400
+                        text-anchor: middle
+                        alignment-baseline: central
+                      
+                  # Surface circle
+                  - type: 'circle'
+                    id: 0
+                    position:
+                      cx: 2.5
+                      cy: 60
+                      radius: 25
+                    styles:
+                      circle:
+                        opacity: 1
+                        fill: var(--primary-background-color)
+
+                  - type: 'circle'
+                    id: 1
+                    entity_index: 0
+                    position:
+                      cx: 2.5
+                      cy: 60
+                      radius: 20
+                    show:
+                      style: 'colorstops'
+                    colorstops:
+                      fill: true
+                      colors:
+                        0: '#A8E05F'
+                        51: '#FDD74B'
+                        101: '#FE9B57'
+                        151: '#FE6A69'
+                        201: '#A97ABC'
+                        301: '#A87383'
+                    styles:
+                      circle:
+                        fill: var(--primary-background-color)
+                        opacity: 1
+                        transition: fill 0.5s
+
+                  - type: 'usersvg'
+                    id: 2
+                    entity_index: 0
+                    position:
+                      cx: 2.5
+                      cy: 60
+                      height: 40
+                      width: 40
+                    style: 'images'
+                    images:
+                      - face1: /local/images/airvisual/ic-face-1.svg
+                      - face2: /local/images/airvisual/ic-face-2.svg
+                      - face3: /local/images/airvisual/ic-face-3.svg
+                      - face4: /local/images/airvisual/ic-face-4.svg
+                      - face5: /local/images/airvisual/ic-face-5.svg
+                      - face6: /local/images/airvisual/ic-face-6.svg
+                    animations:
+                      - state: '50'
+                        operator: <=
+                        image: face1
+                      - state: '100'
+                        operator: <=
+                        image: face2
+                      - state: '150'
+                        operator: <=
+                        image: face3
+                      - state: '200'
+                        operator: <=
+                        image: face4
+                      - state: '300'
+                        operator: <=
+                        image: face5
+                      - state: '9999'
+                        operator: <=
+                        image: face6
+
+                    styles:
+                      usersvg:
+                        opacity: 1
+
+                  # bar
+                  - type: bar
+                    id: 2
+                    orientation: vertical
+                    entity_index: 0
+                    position:
+                      cx: 47.5
+                      cy: 145
+                      width: 180
+                      height: 55
+                      margin: 1
+                    hours: 24
+                    barhours: 1
+                    show:
+                      style: 'colorstops'
+                    colorstops:
+                      colors:
+                        0: '#A8E05F'
+                        50: '#FDD74B'
+                        100: '#FE9B57'
+                        150: '#FE6A69'
+                        200: '#A97ABC'
+                        300: '#A87383'
+                    styles:
+                      bar:
+                        stroke-linecap: round
+                        transition: fill 0.5s
+# =================================#################################################################################################################################################################
+    

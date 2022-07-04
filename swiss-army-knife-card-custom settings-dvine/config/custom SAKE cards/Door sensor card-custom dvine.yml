@@ -111,17 +111,31 @@
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:

@@ -1,0 +1,251 @@
+##############################################################################################################################################################
+##								                                <<<< DOOR LCOK CARD >>>> 
+##############################################################################################################################################################
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: lock.danalock
+              name: 'Voordeur'
+              #decimals: 1
+              icon: mdi:lock
+            - entity: sensor.danalock_battery_level
+              decimals: 0
+
+          # Define aspect ratio
+          aspectratio: 6/1
+
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: line1
+                position:
+                  cx: 200
+                  cy: 50
+                tools:
+                  # ------------------------------------------------------------
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: vertical
+                      length: 50
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 0.5
+
+              # ================================================================
+              - toolset: line2
+                position:
+                  cx: 500
+                  cy: 50
+                tools:
+                  # ------------------------------------------------------------
+                  - type: line
+                    position:
+                      cx: 50
+                      cy: 50
+                      orientation: vertical
+                      length: 50
+                    styles:
+                      line:
+                        fill: var(--primary-text-color)
+                        opacity: 0.5
+
+              # ================================================================
+              - toolset: colomn-icon
+                position:
+                  cx: 30
+                  cy: 50
+                tools:
+                  # ------------------------------------------------------------
+                  - type: icon
+                    fill: var(--theme-ref-palette-primary80)
+                    position:
+                      cx: 50
+                      cy: 50
+                      align: center
+                      icon_size: 30
+                    entity_index: 0
+                    
+              # ================================================================
+              - toolset: colomn-name
+                position:
+                  cx: 120
+                  cy: 50
+                tools:
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 50
+                      cy: 50
+                    entity_index: 0
+                    styles:
+                      name:
+                        text-anchor: middle
+                        font-size: 22em
+                        font-weight: 600
+                        opacity: 1
+                        fill: var(--primary-text-color)
+                  # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 50
+                      cy: 80
+                    entity_index: 0
+                    show:
+                      uom: none
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 15em
+                        font-weight: 490
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 180
+                      cy: 50
+                      align: center
+                      icon_size: 90
+                    entity_index: 0
+                    icon: mdi:shield-lock-open-outline
+                    animations:
+                      - state: 'unlock'
+                        styles:
+                          icon:
+                            animation: jello 2s ease-in-out both
+                            fill: var(--theme-sys-color-primary)
+                      #- state: 'lock'
+                      #  styles:
+                      #    icon:
+                      #      fill: var(--md-fg-color--alert)
+                    user_actions:
+                      tap_action:
+                        haptic: lock
+                        actions:
+                          - action: call-service
+                            service: lock.unlock
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-primary)
+
+              # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:home-outline
+                    position:
+                      cx: 275
+                      cy: 50
+                      align: center
+                      icon_size: 80
+                    entity_index: 2
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-primary)
+                        opacity: 0.2
+                  # ------------------------------------------------------------
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 370
+                      cy: 50
+                      align: center
+                      icon_size: 90
+                    entity_index: 0
+                    icon: mdi:shield-lock
+                    animations:
+                      - state: 'lock'
+                        styles:
+                          icon:
+                            animation: jello 2s ease-in-out both
+                            fill: var(--md-fg-color--alert)
+                      #- state: 'unlock'
+                      #  styles:
+                      #   icon:
+                      #     fill: var(--md-fg-color--alert)
+                    user_actions:
+                      tap_action:
+                        haptic: lock
+                        actions:
+                          - action: call-service
+                            service: lock.lock
+                    styles:
+                      icon:
+                        fill: var(--theme-ref-palette-error60)
+
+              # ------------------------------------------------------------
+              # ================================================================
+              - toolset: colomn-battery
+                position:
+                  cx: 540
+                  cy: 50
+                tools:
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 30
+                      cy: 50
+                      align: right
+                      icon_size: 25
+                    entity_index: 1
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-on-tertiary-container)
+                        # animation: spin 2s ease-in-out both infinite
+
+                  # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 70
+                      cy: 50
+                    entity_index: 1
+                    show:
+                      uom: none
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 18em
+                        font-weight: 700
+                        fill: var(--theme-sys-color-on-tertiary-container)
+                        # animation: blinkingText 2s ease-in-out both infinite
+                      uom:
+                        fill: var(--theme-sys-color-on-tertiary-container)
+                        font-weight: 700
+
+                  # ------------------------------------------------------------ 
+                  - type: 'segarc'
+                    id: 0
+                    position:
+                      cx: 70
+                      cy: 50
+                      start_angle: 0
+                      end_angle: 360
+                      width: 3
+                      radius: 18
+                    entity_index: 1
+                    scale:
+                      min: 0
+                      max: 100
+                      width: 6
+                      offset: 12
+                    show:
+                      scale: false
+                      style: 'colorlist'
+                    segments:
+                      colorlist:
+                        gap: 1
+                        colors:
+                          - var(--theme-sys-palette-tertiary45)
+                    styles:
+                      foreground:
+                        fill: darkgrey
+                      background:
+                        fill: var(--theme-sys-palette-tertiary95)
+                        opacity: 1
+
+##############################################################################################################################################################
+##								                                <<<<  END DOOR LCOK CARD >>>> 
+##############################################################################################################################################################

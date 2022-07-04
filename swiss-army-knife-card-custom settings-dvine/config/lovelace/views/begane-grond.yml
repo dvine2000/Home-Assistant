@@ -14,7 +14,7 @@
 ## CUSTOM COLOR SETTINGS > config\lovelace\sak_templates\definitions\user-css-definitions.yaml
 ## CUSTOM COLORSTOP FOR ILLUMUINANCE > FILES IN config\lovelace\sak_templates\definitions\colorstops-lux-template.yaml
 ##
-## CUSTOM COLORSTOP POWER TEMPLATE FOR WALL PLUG YOU NEED THIS COLORSTOPS-POWER-TEMPLATE TO MAKE IT WORK
+## CUSTOM COLORSTOP POWER TEMPLATE FOR WALL PLUG
 ## CUSTOM AND NEW COLORSTOP FILES IN config\lovelace\sak_templates\definitions\colorstops-power-template.yaml													
 ##
 ## FOLLWING CARDS ARE USED HERE (CUSTOM NAMES WITH CUSTOM SETTINGS FROM THE WONDERFULL SAKE CARDS) COLORS, SLIDERS ICONS ETC.
@@ -1829,7 +1829,7 @@ cards:
                         classes:
                           rectex:
                             sak-switch-off: true
-
+                            # ------------------------------------------------------------
                   # ------------------------------------------------------------
                   - type: icon
                     position:
@@ -2133,17 +2133,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -3208,18 +3222,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 72
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -3570,18 +3597,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -4069,18 +4109,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -4568,18 +4621,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -5073,18 +5139,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:

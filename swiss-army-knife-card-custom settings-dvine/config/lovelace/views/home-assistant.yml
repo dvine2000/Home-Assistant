@@ -33,10 +33,10 @@ cards:
     # ==========================================================================
     - type: horizontal-stack
       cards:
-        # 
-        # Voor Deur DanaLock
-        # 
-        ########################################################################
+
+##############################################################################################################################################################
+##								                                <<<< DOOR LCOK CARD >>>> 
+##############################################################################################################################################################
         - type: 'custom:swiss-army-knife-card'
           entities:
             - entity: lock.danalock
@@ -122,30 +122,42 @@ cards:
                     styles:
                       name:
                         text-anchor: middle
-                        font-size: 25em
-                        font-weight: 700
+                        font-size: 22em
+                        font-weight: 600
                         opacity: 1
                         fill: var(--primary-text-color)
                   # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 50
+                      cy: 80
+                    entity_index: 0
+                    show:
+                      uom: none
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 15em
+                        font-weight: 490
                   # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:shield-lock-open-outline
                     position:
                       cx: 180
                       cy: 50
                       align: center
-                      icon_size: 50
+                      icon_size: 90
                     entity_index: 0
+                    icon: mdi:shield-lock-open-outline
                     animations:
                       - state: 'unlock'
                         styles:
                           icon:
-                            fill: var(--md-fg-color--alert)
                             animation: jello 2s ease-in-out both
-                      - state: 'lock'
-                        styles:
-                          icon:
-                            fill: var(--md-fg-color--alert)
+                            fill: var(--theme-sys-color-primary)
+                      #- state: 'lock'
+                      #  styles:
+                      #    icon:
+                      #      fill: var(--md-fg-color--alert)
                     user_actions:
                       tap_action:
                         haptic: lock
@@ -154,7 +166,7 @@ cards:
                             service: lock.unlock
                     styles:
                       icon:
-                        fill: var(--theme-ref-palette-primary40)
+                        fill: var(--theme-sys-color-primary)
 
               # ------------------------------------------------------------
                   - type: icon
@@ -163,33 +175,33 @@ cards:
                       cx: 275
                       cy: 50
                       align: center
-                      icon_size: 90
+                      icon_size: 80
                     entity_index: 2
                     styles:
                       icon:
-                        fill: var(--theme-ref-palette-primary80)
+                        fill: var(--theme-sys-color-primary)
                         opacity: 0.2
                   # ------------------------------------------------------------
 
                   # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:shield-lock
                     position:
                       cx: 370
                       cy: 50
                       align: center
-                      icon_size: 50
+                      icon_size: 90
                     entity_index: 0
+                    icon: mdi:shield-lock
                     animations:
                       - state: 'lock'
                         styles:
                           icon:
-                            fill: var(--md-fg-color--alert)
                             animation: jello 2s ease-in-out both
-                      - state: 'unlock'
-                        styles:
-                          icon:
                             fill: var(--md-fg-color--alert)
+                      #- state: 'unlock'
+                      #  styles:
+                      #   icon:
+                      #     fill: var(--md-fg-color--alert)
                     user_actions:
                       tap_action:
                         haptic: lock
@@ -200,10 +212,7 @@ cards:
                       icon:
                         fill: var(--theme-ref-palette-error60)
 
-                  # ------------------------------------------------------------
-
- 
-
+              # ------------------------------------------------------------
               # ================================================================
               - toolset: colomn-battery
                 position:
@@ -214,7 +223,7 @@ cards:
                   - type: icon
                     position:
                       cx: 30
-                      cy: 30
+                      cy: 50
                       align: right
                       icon_size: 25
                     entity_index: 1
@@ -227,7 +236,7 @@ cards:
                   - type: state
                     position:
                       cx: 70
-                      cy: 30
+                      cy: 50
                     entity_index: 1
                     show:
                       uom: none
@@ -247,7 +256,7 @@ cards:
                     id: 0
                     position:
                       cx: 70
-                      cy: 30
+                      cy: 50
                       start_angle: 0
                       end_angle: 360
                       width: 3
@@ -273,4 +282,840 @@ cards:
                         fill: var(--theme-sys-palette-tertiary95)
                         opacity: 1
 
-              # ================================================================
+##############################################################################################################################################################
+##								                                <<<<  END DOOR LCOK CARD >>>> 
+##############################################################################################################################################################
+
+- type: horizontal-stack
+  cards:
+#- type: grid
+#  columns: 2
+#    #square: false
+#  cards:
+
+##############################################################################################################################################################
+##								                                <<<<  INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+    - type: 'custom:swiss-army-knife-card'
+      entities:
+        - entity: input_select.tom
+          name: 'Tom'
+        - entity: input_select.tom
+          secondary_info: last_changed
+          format: relative
+      # Define aspect ratio
+      aspectratio: 3/1                          # Card is 300x100 grid
+
+      layout:
+        toolsets:
+          # ================================================================
+          - toolset: badge-background
+            position:
+              cx: 150                           # Center at middle of card
+              cy: 50                            # Center at middle of card
+            tools:
+              - type: badge
+                position:
+                  cx: 50
+                  cy: 50
+                  height: 100                   # Badge covers the full..
+                  width: 300
+                  ratio: 25
+                  radius: 5
+                  divider: 20
+                entity_index: 0                 # Uses entity 0
+                animations:
+                  - state: 'Home'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-color-primary)
+                  - state: 'Away'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                styles:
+                  left:
+                    fill: grey
+                  right:
+                    fill: none                 # Show background of card
+          # ================================================================
+          # Tom
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-account
+                animations:
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-export-outline
+                animations:
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Tom
+          # ================================================================
+          - toolset: column-name
+            position:
+              cx: 100               # Left part = 75, so 75+(300-75)/2
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: name
+                position:
+                  cx: 50
+                  cy: 50
+                entity_index: 0
+                styles:
+                  name:
+                    text-anchor: start
+                    font-size: 24em
+                    font-weight: 600
+                    opacity: 1
+              # ------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 20
+                entity_index: 0
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 16em
+                    font-weight: 500
+                    opacity: 0.8
+              #-------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 80
+                entity_index: 1
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 12em
+                    font-weight: 450
+                    opacity: 0.7
+
+##############################################################################################################################################################
+##								                                <<<<  END INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+##############################################################################################################################################################
+##								                                <<<<  INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+
+    - type: 'custom:swiss-army-knife-card'
+      entities:
+        - entity: input_select.patricia
+          name: 'Patricia'
+        - entity: input_select.patricia
+          secondary_info: last_changed
+          format: relative
+      # Define aspect ratio
+      aspectratio: 3/1                          # Card is 300x100 grid
+
+      layout:
+        toolsets:
+          # ================================================================
+          - toolset: badge-background
+            position:
+              cx: 150                           # Center at middle of card
+              cy: 50                            # Center at middle of card
+            tools:
+              - type: badge
+                position:
+                  cx: 50
+                  cy: 50
+                  height: 100                   # Badge covers the full..
+                  width: 300
+                  ratio: 25
+                  radius: 5
+                  divider: 20
+                entity_index: 0                 # Uses entity 0
+                animations:
+                  - state: 'Home'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-color-primary)
+                  - state: 'Away'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                styles:
+                  left:
+                    fill: grey
+                  right:
+                    fill: none                 # Show background of card
+          # ================================================================
+          # Patricia
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-account
+                animations:
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-export-outline
+                animations:
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Patricia
+          # ================================================================
+          - toolset: column-name
+            position:
+              cx: 100               # Left part = 75, so 75+(300-75)/2
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: name
+                position:
+                  cx: 50
+                  cy: 50
+                entity_index: 0
+                styles:
+                  name:
+                    text-anchor: start
+                    font-size: 24em
+                    font-weight: 600
+                    opacity: 1
+              # ------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 20
+                entity_index: 0
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 16em
+                    font-weight: 500
+                    opacity: 0.8
+              #-------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 80
+                entity_index: 1
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 12em
+                    font-weight: 450
+                    opacity: 0.7
+
+##############################################################################################################################################################
+##								                                <<<<  END INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+- type: horizontal-stack
+  cards:
+#- type: grid
+#  columns: 2
+#    #square: false
+#  cards:
+
+# ===================================
+# Time of the Day
+# ===================================
+
+
+##############################################################################################################################################################
+##								                                <<<<  INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+
+    - type: 'custom:swiss-army-knife-card'
+      entities:
+        - entity: input_select.time_of_day
+          name: 'Time of Day'
+        - entity: input_select.time_of_day
+          secondary_info: last_changed
+          format: relative
+      # Define aspect ratio
+      aspectratio: 3/1                          # Card is 300x100 grid
+
+      layout:
+        toolsets:
+          # ================================================================
+          - toolset: badge-background
+            position:
+              cx: 150                           # Center at middle of card
+              cy: 50                            # Center at middle of card
+            tools:
+              - type: badge
+                position:
+                  cx: 50
+                  cy: 50
+                  height: 100                   # Badge covers the full..
+                  width: 300
+                  ratio: 25
+                  radius: 5
+                  divider: 20
+                entity_index: 0                 # Uses entity 0
+                animations:
+                  - state: 'Morning'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-ref-palette-primary50)
+                  - state: 'Day'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-ref-palette-primary80)
+                  - state: 'Evening'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-ref-palette-primary30)
+                  - state: 'Night'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-ref-palette-neutral50)
+                styles:
+                  left:
+                    fill: grey
+                  right:
+                    fill: none                 # Show background of card
+          # ================================================================
+          # Time of Day Morning
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:weather-sunset-up
+                animations:
+                  - state: 'Morning'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'day'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Evening'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Night'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Time of Day Day
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:weather-partly-cloudy
+                animations:
+                  - state: 'Day'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Morning'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Evening'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Night'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Time of Day Evening
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:weather-sunset-down
+                animations:
+                  - state: 'Evening'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Morning'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Day'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Night'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Time of Day Night
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:weather-night
+                animations:
+                  - state: 'Night'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Morning'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Day'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Evening'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Time of Day
+          # ================================================================
+          - toolset: column-name
+            position:
+              cx: 100               # Left part = 75, so 75+(300-75)/2
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: name
+                position:
+                  cx: 50
+                  cy: 50
+                entity_index: 0
+                styles:
+                  name:
+                    text-anchor: start
+                    font-size: 24em
+                    font-weight: 600
+                    opacity: 1
+              # ------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 20
+                entity_index: 0
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 16em
+                    font-weight: 500
+                    opacity: 0.8
+              #-------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 80
+                entity_index: 1
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 12em
+                    font-weight: 450
+                    opacity: 0.7
+
+##############################################################################################################################################################
+##								                                <<<<  END INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+# ===================================
+# Time of the Day
+# ===================================
+
+
+##############################################################################################################################################################
+##								                                <<<<  INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+
+    - type: 'custom:swiss-army-knife-card'
+      entities:
+        - entity: input_select.present_state
+          name: 'Present State'
+        - entity: input_select.present_state
+          secondary_info: last_changed
+          format: relative
+      # Define aspect ratio
+      aspectratio: 3/1                          # Card is 300x100 grid
+
+      layout:
+        toolsets:
+          # ================================================================
+          - toolset: badge-background
+            position:
+              cx: 150                           # Center at middle of card
+              cy: 50                            # Center at middle of card
+            tools:
+              - type: badge
+                position:
+                  cx: 50
+                  cy: 50
+                  height: 100                   # Badge covers the full..
+                  width: 300
+                  ratio: 25
+                  radius: 5
+                  divider: 20
+                entity_index: 0                 # Uses entity 0
+                animations:
+                  - state: 'Home'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-color-primary)
+                  - state: 'Away'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                  - state: 'Holiday'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                styles:
+                  left:
+                    fill: grey
+                  right:
+                    fill: none                 # Show background of card
+          # ================================================================
+          # Home
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home
+                animations:
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Away
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-remove-outline
+                animations:
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Holiday
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:island
+                animations:
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+
+          # ================================================================
+          # Present State name
+          # ================================================================
+          - toolset: column-name
+            position:
+              cx: 100               # Left part = 75, so 75+(300-75)/2
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: name
+                position:
+                  cx: 50
+                  cy: 50
+                entity_index: 0
+                styles:
+                  name:
+                    text-anchor: start
+                    font-size: 24em
+                    font-weight: 600
+                    opacity: 1
+              # ------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 20
+                entity_index: 0
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 16em
+                    font-weight: 500
+                    opacity: 0.8
+              #-------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 80
+                entity_index: 1
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 12em
+                    font-weight: 450
+                    opacity: 0.7
+
+##############################################################################################################################################################
+##								                                <<<<  END INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+

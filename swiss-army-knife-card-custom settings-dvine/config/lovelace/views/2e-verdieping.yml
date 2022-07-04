@@ -76,12 +76,12 @@ cards:
         - type: 'custom:swiss-army-knife-card'
           entities:
             - entity: light.light_wasruimte
-              name: Light Wasruimte
+              name: Light
               area: Wasruimte
               icon: mdi:light-recessed
 
             - entity: light.light_wasruimte
-              name: Light Wasruimte
+              name: Light
               area: Wasruimte
               icon: mdi:light-recessed
               attribute: brightness
@@ -353,12 +353,12 @@ cards:
         - type: 'custom:swiss-army-knife-card'
           entities:
             - entity: light.light_zolder
-              name: Light Zolder
+              name: Light Dakkapel
               area: Zolder
               icon: mdi:light-recessed
 
             - entity: light.light_zolder
-              name: Light Zolder
+              name: Light Dakkapel
               area: Zolder
               icon: mdi:light-recessed
               attribute: brightness
@@ -444,12 +444,6 @@ cards:
                         styles:
                           icon:
                             fill: var(--primary-text-color)
-                    user_actions:
-                      tap_action:
-                        haptic: light
-                        actions:
-                          - action: call-service
-                            service: light.toggle
                     styles:
                       icon:
                         fill: var(--primary-text-color)
@@ -631,13 +625,13 @@ cards:
         - type: 'custom:swiss-army-knife-card'
           entities:
             - entity: light.light_zolder_dimmer_2
-              name: Light 2 Zolder
-              area: Slaapkamer
+              name: Light Slaapkamer
+              area: Zolder
               icon: mdi:light-recessed
 
             - entity: light.light_zolder_dimmer_2
-              name: Light 2 Zolder
-              area: Slaapkamer
+              name: Light Slaapkamer
+              area: Zolder
               icon: mdi:light-recessed
               attribute: brightness
               unit_of_measurement: "%"
@@ -1775,18 +1769,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 72
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -1967,18 +1974,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 72
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -2032,6 +2052,214 @@ cards:
 ##############################################################################################################################################################
 ##									                        <<<<<  END CO DETECTOR CARD   >>>>> 
 ##############################################################################################################################################################
+
+
+
+##############################################################################################################################################################
+##								                    	<<<<  FLOOD SENSOR CARD >>>> 
+##############################################################################################################################################################
+
+
+        - type: 'custom:swiss-army-knife-card'
+          entities:
+            - entity: binary_sensor.flood_sensor_wasruimte_water_leak_state
+              name: 'Water Sensor'
+              area: 'Wasruimte'
+            - entity: binary_sensor.flood_sensor_wasruimte_water_leak_state
+              secondary_info: last_changed
+              format: relative
+              
+            - entity: sensor.flood_sensor_wasruimte_battery_level
+              name: Battery
+              icon: mdi:battery
+
+          # Define aspect ratio as square
+          aspectratio: 1/1
+
+          disable_card: false
+
+          dev:
+            debug: false
+            
+          layout:
+            styles:
+              card:
+              toolsets:
+              
+            toolsets:
+              # ================================================================
+              - toolset: square-state
+                position:
+                  cx: 50
+                  cy: 50
+                tools:
+                  # Background used for active / inactive card
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 50
+                      width: 100
+                      height: 100
+                      radius:
+                        top: 0
+                        bottom: 0
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-card--on: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-card--off: true
+
+                  # State rectangle at the top of the card. Colors with the state
+                  # ------------------------------------------------------------
+                  - type: rectex
+                    position:
+                      cx: 50
+                      cy: 2.5
+                      width: 90
+                      height: 5
+                      radius:
+                        top: 0
+                        bottom: 2
+                    entity_index: 0
+                    animations:
+                      - state: 'on'
+                        classes:
+                          rectex:
+                            sak-alert2--active: true
+                      - state: 'off'
+                        classes:
+                          rectex:
+                            sak-alert2--clear: true
+                  # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:alpha-w-circle-outline
+                    position:
+                      cx: 25
+                      cy: 25
+                      align: center
+                      icon_size: 30
+                    entity_index: 2
+                    styles:
+                      icon:
+                        fill: var(--primary-text-color)
+
+                  # ------------------------------------------------------------
+                  - type: icon
+                    icon: mdi:water-alert
+                    position:
+                      cx: 50
+                      cy: 25
+                      align: center
+                      icon_size: 40
+                    entity_index: 0
+                    # Define colors for the icon depending on the state
+                    # Note that we have to define both on and off states, as for some reason
+                    # the default styling (in case of 'off' state keeps the color of the 'on'
+                    # state (unexpected...)
+                    #
+                    # The icon animation ONLY works in Safari. This is due to the fact that
+                    # Safari has a different render path than Chrome. This will be fixed 
+                    # in the future of course ;-)
+                    animations:
+                      - state: 'on'
+                        styles:
+                          icon:
+                            fill: var(--theme-ref-palette-error60)
+                            animation: jello 2s ease-in-out both
+                      - state: 'off'
+                        styles:
+                          icon:
+                            fill: var(--theme-sys-ha-disabled-text-color)
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-ha-primary-text-color)
+                  # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
+                  - type: icon
+                    position:
+                      cx: 72
+                      cy: 25
+                      align: center
+                      icon_size: 10
+                    entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
+                  # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 85
+                      cy: 25
+                    entity_index: 2
+                    styles:
+                      state:
+                        text-anchor: middle
+                        font-size: 7em
+                        font-weight: 700
+                        fill: var(--primary-text-color)
+                      uom:
+                        fill: var(--primary-text-color)
+                        font-weight: 700
+                  # ------------------------------------------------------------
+                  - type: name
+                    position:
+                      cx: 10
+                      cy: 55
+                    entity_index: 0
+                    classes:
+                      name:
+                        homekit-name__name: true
+
+                  # ------------------------------------------------------------
+                  - type: area
+                    position:
+                      cx: 10
+                      cy: 70
+                    entity_index: 0
+                    classes:
+                      area:
+                        homekit-area__area: true
+
+                  # ------------------------------------------------------------
+                  - type: state
+                    position:
+                      cx: 10
+                      cy: 85
+                    entity_index: 1
+                    styles:
+                      state:
+                        text-anchor: start
+                        font-size: 8em
+                        font-weight: 700
+                        fill: var(--theme-sys-ha-primary-text-color)
+                      uom:
+                        fill: var(--theme-sys-ha-primary-text-color)
+                        font-weight: 700
+##############################################################################################################################################################
+##									                        <<<<<  END FLOOD CARD   >>>>> 
+##############################################################################################################################################################
+
+
 
 # NEW DIVIDER LINE WITH TEKST
 
@@ -2324,18 +2552,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:
@@ -2822,18 +3063,31 @@ cards:
                       icon:
                         fill: var(--theme-sys-ha-primary-text-color)
                   # ------------------------------------------------------------
+                  # Battery Icon > with state
+                  # ------------------------------------------------------------
                   - type: icon
-                    icon: mdi:battery
                     position:
                       cx: 62
                       cy: 25
                       align: center
                       icon_size: 10
                     entity_index: 2
+                    animations:
+                      - state: '15'             # Battery almost dead!
+                        operator: <=
+                        styles:
+                          icon:
+                            animation: blinkingText 2s ease-in-out both infinite
+                            fill: var(--brand-google-red)
+                      - state: '25'             # Battery warning!
+                        operator: <=
+                        styles:
+                          icon:
+                            fill: var(--brand-google-yellow)
                     styles:
                       icon:
-                        fill: var(--primary-text-color)
-
+                        fill: var(--theme-sys-color-tertiary)
+                        opacity: 0.5
                   # ------------------------------------------------------------
                   - type: state
                     position:

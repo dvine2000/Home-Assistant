@@ -1,0 +1,216 @@
+##############################################################################################################################################################
+##								                                <<<<  INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
+
+
+
+    - type: 'custom:swiss-army-knife-card'
+      entities:
+        - entity: input_select.present_state
+          name: 'Present State'
+        - entity: input_select.present_state
+          secondary_info: last_changed
+          format: relative
+      # Define aspect ratio
+      aspectratio: 3/1                          # Card is 300x100 grid
+
+      layout:
+        toolsets:
+          # ================================================================
+          - toolset: badge-background
+            position:
+              cx: 150                           # Center at middle of card
+              cy: 50                            # Center at middle of card
+            tools:
+              - type: badge
+                position:
+                  cx: 50
+                  cy: 50
+                  height: 100                   # Badge covers the full..
+                  width: 300
+                  ratio: 25
+                  radius: 5
+                  divider: 20
+                entity_index: 0                 # Uses entity 0
+                animations:
+                  - state: 'Home'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-color-primary)
+                  - state: 'Away'                # Animate for state OFF
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                  - state: 'Holiday'                 # Animate for state ON
+                    styles:
+                      left:
+                        fill: var(--theme-sys-elevation-surface-neutral4)
+                styles:
+                  left:
+                    fill: grey
+                  right:
+                    fill: none                 # Show background of card
+          # ================================================================
+          # Home
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home
+                animations:
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Away
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:home-remove-outline
+                animations:
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+          # ================================================================
+          # Holiday
+          # ================================================================
+          - toolset: column-icon
+            position:
+              cx: 37.5
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: icon
+                position:
+                  cx: 50
+                  cy: 50
+                  align: center
+                  icon_size: 45
+                entity_index: 0
+                icon: mdi:island
+                animations:
+                  - state: 'Holiday'
+                    styles:
+                      icon:
+                        fill: var(--brand-google-red)
+                        opacity: 1
+                  - state: 'Home'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                  - state: 'Away'
+                    styles:
+                      icon:
+                        fill: var(--theme-sys-color-secondary)
+                        opacity: 0.0
+                styles:
+                  icon:
+                    fill: var(--primary-background-color)
+                    opacity: 0.9
+
+          # ================================================================
+          # Present State name
+          # ================================================================
+          - toolset: column-name
+            position:
+              cx: 100               # Left part = 75, so 75+(300-75)/2
+              cy: 50
+            tools:
+              # ------------------------------------------------------------
+              - type: name
+                position:
+                  cx: 50
+                  cy: 50
+                entity_index: 0
+                styles:
+                  name:
+                    text-anchor: start
+                    font-size: 24em
+                    font-weight: 600
+                    opacity: 1
+              # ------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 20
+                entity_index: 0
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 16em
+                    font-weight: 500
+                    opacity: 0.8
+              #-------------------------------------------------------------
+              - type: state
+                position:
+                  cx: 50
+                  cy: 80
+                entity_index: 1
+                show:
+                  uom: none
+                styles:
+                  state:
+                    text-anchor: start
+                    font-size: 12em
+                    font-weight: 450
+                    opacity: 0.7
+
+##############################################################################################################################################################
+##								                                <<<<  END INPUT SELECT CARD >>>> 
+##############################################################################################################################################################
