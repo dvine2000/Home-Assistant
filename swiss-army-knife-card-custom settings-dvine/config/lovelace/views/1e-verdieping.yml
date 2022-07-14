@@ -2235,7 +2235,7 @@ cards:
                       cx: 15
                       cy: 25
                       align: center
-                      icon_size: 10
+                      icon_size: 25
                     entity_index: 0
 
                   # ------------------------------------------------------------
