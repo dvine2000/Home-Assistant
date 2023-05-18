@@ -1,13 +1,17 @@
 ##############################################################################################################################################################
-##								                                <<<< DOOR LCOK CARD >>>> 
+##			                       <<<< DOOR LCOK CARD >>>> 
 ##############################################################################################################################################################
         - type: 'custom:swiss-army-knife-card'
           entities:
             - entity: lock.danalock
               name: 'Voordeur'
+              icon: mdi:shield-lock-open-outline
+            - entity: lock.danalock
+              name: 'Voordeur'
+              icon: mdi:shield-lock
               #decimals: 1
-              icon: mdi:lock
             - entity: sensor.danalock_battery_level
+              icon: mdi:lock
               decimals: 0
 
           # Define aspect ratio
@@ -111,17 +115,13 @@
                       align: center
                       icon_size: 90
                     entity_index: 0
-                    icon: mdi:shield-lock-open-outline
+                    #icon: mdi:shield-lock-open-outline
                     animations:
                       - state: 'unlock'
                         styles:
                           icon:
-                            animation: jello 2s ease-in-out both
                             fill: var(--theme-sys-color-primary)
-                      #- state: 'lock'
-                      #  styles:
-                      #    icon:
-                      #      fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
                     user_actions:
                       tap_action:
                         haptic: lock
@@ -140,7 +140,7 @@
                       cy: 50
                       align: center
                       icon_size: 80
-                    entity_index: 2
+                    entity_index: 3
                     styles:
                       icon:
                         fill: var(--theme-sys-color-primary)
@@ -154,21 +154,17 @@
                       cy: 50
                       align: center
                       icon_size: 90
-                    entity_index: 0
-                    icon: mdi:shield-lock
+                    entity_index: 1
+                    #icon: mdi:shield-lock
                     animations:
                       - state: 'lock'
                         styles:
                           icon:
-                            animation: jello 2s ease-in-out both
                             fill: var(--md-fg-color--alert)
-                      #- state: 'unlock'
-                      #  styles:
-                      #   icon:
-                      #     fill: var(--md-fg-color--alert)
+                            animation: jello 2s ease-in-out both
                     user_actions:
                       tap_action:
-                        haptic: lock
+                        haptic: unlock
                         actions:
                           - action: call-service
                             service: lock.lock
@@ -190,7 +186,7 @@
                       cy: 50
                       align: right
                       icon_size: 25
-                    entity_index: 1
+                    entity_index: 2
                     styles:
                       icon:
                         fill: var(--theme-sys-color-on-tertiary-container)
@@ -201,7 +197,7 @@
                     position:
                       cx: 70
                       cy: 50
-                    entity_index: 1
+                    entity_index: 2
                     show:
                       uom: none
                     styles:
@@ -247,5 +243,5 @@
                         opacity: 1
 
 ##############################################################################################################################################################
-##								                                <<<<  END DOOR LCOK CARD >>>> 
+##				                    <<<<  END DOOR LCOK CARD >>>> 
 ##############################################################################################################################################################
