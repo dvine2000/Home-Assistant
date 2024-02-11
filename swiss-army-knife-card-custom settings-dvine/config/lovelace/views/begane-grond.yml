@@ -909,7 +909,12 @@ cards:
 # ==============================================================================================
 # 2nd ROW auto setup because of grid card
 # ==============================================================================================
-      
+
+
+  - type: grid
+    columns: 3
+    #square: false
+    cards:
 ##############################################################################################################################################################
 ##									                        <<<<  LIGHT SLIDER CARD >>>> 
 ##############################################################################################################################################################
@@ -1748,7 +1753,10 @@ cards:
 # ==============================================================================================
 # 3th ROW auto setup because of grid card
 # ==============================================================================================
-
+  - type: grid
+    columns: 3
+    #square: false
+    cards:
 ##############################################################################################################################################################
 ##								                          	<<<<  LIGHT SWITCH CARD >>>> 
 ##############################################################################################################################################################
@@ -2027,13 +2035,13 @@ cards:
 
         - type: 'custom:swiss-army-knife-card'
           entities:
-            - entity: binary_sensor.wc_deur_access_control_window_door_is_open
+            - entity: binary_sensor.wc_deur_window_door_is_open_in_regular_position
               name: 'WC Deur'
               area: 'Hal'
-            - entity: binary_sensor.wc_deur_access_control_window_door_is_open
+              icon: mdi:door
+            - entity: binary_sensor.wc_deur_window_door_is_open_in_regular_position
               secondary_info: last_changed
               format: relative
-              
             - entity: sensor.wc_deur_battery_level
               name: Battery
               icon: mdi:battery
@@ -2216,7 +2224,10 @@ cards:
 # ==============================================================================================
 # 4th ROW  auto setup because of grid card
 # ==============================================================================================
-
+  - type: grid
+    columns: 3
+    #square: false
+    cards:
 ##############################################################################################################################################################
 ##								                        	<<<<  WALL PLUG SENSOR CARD >>>> 
 ##############################################################################################################################################################
@@ -2713,7 +2724,10 @@ cards:
 # ==============================================================================================
 # 5th ROW  auto setup because of grid card
 # ==============================================================================================
-
+  - type: grid
+    columns: 3
+    #square: false
+    cards:
 
 ##############################################################################################################################################################
 ##                                                              <<<<  SUNSCREEN / AWNINGS CARD >>>> 
@@ -4875,7 +4889,7 @@ cards:
 
         - type: 'custom:swiss-army-knife-card'
           entities:
-            - entity: sensor.motion_sensor_berging_air_temperature
+            - entity: sensor.berging_air_temperature
               unit: '°C'
               decimals: 1
               area: 'Berging'
@@ -5033,14 +5047,14 @@ cards:
 
         - type: 'custom:swiss-army-knife-card'
           entities:
-            - entity: binary_sensor.motion_sensor_berging_any
+            - entity: binary_sensor.berging_motion_detection
               name: 'Motion'
               area: 'Berging'
-            - entity: binary_sensor.motion_sensor_berging_any
+            - entity: binary_sensor.berging_motion_detection
               secondary_info: last_changed
               format: relative
               
-            - entity: sensor.motion_sensor_berging_battery_level
+            - entity: sensor.berging_battery_level
               name: Battery
               icon: mdi:battery
 
@@ -5227,7 +5241,7 @@ cards:
                         
         - type: 'custom:swiss-army-knife-card'
           entities:
-            - entity: sensor.motion_sensor_berging_illuminance
+            - entity: sensor.berging_illuminance
               decimals: 0
               unit: 'Lux'
               area: 'Bergin'
